@@ -1,72 +1,122 @@
 
-function validatePhone() {
-    let phone = document.getElementById("phone");
-    if (!phone.value.match(/^\d{10}$/)) {
-        alert("Please enter a valid 10-digit phone number.");
-        phone.focus();
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #f4f4f4, #e2e2e2);
+}
+
+#welcomeBanner {
+    background-color: blue;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+h2[style] {
+    color: red;
+}
+
+
+nav {
+    background: #007BFF;
+    padding: 10px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+}
+
+tr:nth-child(even) {
+    background: #ddd;
+}
+img {
+    width: 100px;
+    height: 100px;
+    border: 2px solid black;
+}
+
+form {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 50%;
+    margin: 20px auto;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+}
+
+input:focus, textarea:focus {
+    outline: 2px solid #007BFF;
+}
+button {
+    background: #007BFF;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+.news-section {
+    column-count: 2;
+    column-gap: 30px;
+    column-rule: 1px solid gray;
+}
+
+
+@media screen and (max-width: 768px) {
+    nav {
+        display: flex;
+        flex-direction: column;
     }
-}
-function showEventFee() {
-    let eventType = document.getElementById("eventType").value;
-    let feeDisplay = document.getElementById("eventFee");
-    let fee = eventType === "Concert" ? "$50" : eventType === "Workshop" ? "$30" : "$20";
-    feeDisplay.innerText = "Event Fee: " + fee;
-}
 
-document.getElementById("registerBtn").onclick = function () {
-    alert("Your event registration has been submitted!");
-};
-
-document.getElementById("eventImage").ondblclick = function () {
-    this.style.width = "200px";
-    this.style.height = "200px";
-};
-
-document.getElementById("feedback").onkeyup = function () {
-    document.getElementById("charCount").innerText = "Characters: " + this.value.length;
-};
-
-document.getElementById("promoVideo").oncanplay = function () {
-    document.getElementById("videoStatus").innerText = "Video ready to play!";
-};
-
-function savePreference() {
-    let selectedEvent = document.getElementById("eventType").value;
-    localStorage.setItem("preferredEvent", selectedEvent);
-    alert("Event preference saved!");
-}
-
-
-function loadPreference() {
-    let savedEvent = localStorage.getItem("preferredEvent");
-    if (savedEvent) {
-        document.getElementById("eventType").value = savedEvent;
+    form {
+        width: 90%;
     }
 
-function clearPreferences() {
-    localStorage.clear();
-    alert("Preferences cleared!");
-}
-
-
-function findLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-            function (position) {
-                alert("Your Location: " + position.coords.latitude + ", " + position.coords.longitude);
-            },
-            function (error) {
-                alert("Error in fetching location: " + error.message);
-            },
-            { enableHighAccuracy: true }
-        );
-    } else {
-        alert("Geolocation is not supported by your browser.");
+    img {
+        width: 80px;
+        height: 80px;
     }
+
+    nav a {
+        display: block;
+        padding: 5px;
+    }
+footer {
+    text-align: center;
+    padding: 10px;
+    background: #333;
+    color: white;
 }
 
-
-console.log("Script Loaded Successfully!");
-window.onload = function () {
-    loadPreference();
-};
+ 
